@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Week 4 Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Reset -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!-- <div id="logo">
+            <img src="assets/images/logo.png " alt="logo">
+        </div> -->
+        <h1>BATTLE</h1>
+        <h2>Pick a character and enemy to get started!</h2>
+        <h2>Click the 'ATTACK' button to battle!</h2>
+    </header>
+
+    <div class="container-fluid">
+        <!-- HP row. -->
+        <div class="row" id="hpRow">
+            <div class="col-md-4" id="playerHP"></div>
+            <button id="attackBtn">ATTACK!</button>
+            <div class="col-md-4" id="enemyHP"></div>
+        </div>
+
+        <!-- Game row. -->
+        <div class="row" id="gameRow">
+            <div class="col-md-8">
+                <div class="col-md-3" id="playerGame"></div>
+                <div class="col-md-3" id="gameComments"></div>
+                <div class="col-md-3" id="enemyGame"></div>
+            </div>
+        </div>
+
+        <!-- Characters row.-->
+        <div class="row" id="characterRow">
+
+        </div>
+
+    </div>
+    </div>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+body {
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'VT323', monospace;
+    letter-spacing: 3px;
+    font-stretch: expanded;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+header {
+    color: #ffffff;
+    text-align: center;
+}
+
+.container-fluid {
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+#hpRow {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 5px solid #3c69aa;
+    margin: 10px;
+}
+
+#playerHP,
+#enemyHP {
+    color: white;
+    margin-top: 5px;
+}
+
+#attackBtn {
+    padding: 10px;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 8px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+#attackBtn:hover {
+    background-color: #e72727;
+    color: #ffffff;
+}
+
+#gameRow {
+    background-image: url("../images/gameBG.png");
+    border: 5px solid #f8cb46;
+    margin: 10px;
+    height: 400px;
+}
+
+#characterRow {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 5px solid #3c69aa;
+    margin: 10px;
+}
+
+;
