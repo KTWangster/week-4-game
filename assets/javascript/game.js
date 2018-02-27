@@ -1,73 +1,101 @@
 $(document).ready(function() {
-            // Array containing character objects.
-            let charObj = [{
-                    name: "Pikachu",
-                    hp: 100,
-                    image: "assets/images/pikachu.png",
-                    gif: "assets/images/pikachuGIF.gif",
-                },
-                {
-                    name: "Bulbasaur",
-                    hp: 100,
-                    image: "assets/images/bulbasaur.png",
-                    gif: "assets/images/bulbasaurGIF.gif",
-                },
-                {
-                    name: "Squirtle",
-                    hp: 100,
-                    image: "assets/images/squirtle.png",
-                    gif: "assets/images/squirtleGIF.gif",
-                },
-                {
-                    name: "Charmander",
-                    hp: 100,
-                    image: "assets/images/charmander.png",
-                    gif: "assets/images/charmanderGIF.gif",
-                },
-            ]
+    // Array containing character objects.
+    var characters = {
+        pikachu: {
+            name: "Pikachu",
+            hp: 100,
+            image: "assets/images/pikachu.png",
+            gif: "assets/images/pikachuGIF.gif"
+        },
+        bulbasaur: {
+            name: "Bulbasaur",
+            hp: 100,
+            image: "assets/images/bulbasaur.png",
+            gif: "assets/images/bulbasaurGIF.gif",
+        },
+        squirtle: {
+            name: "Squirtle",
+            hp: 100,
+            image: "assets/images/squirtle.png",
+            gif: "assets/images/squirtleGIF.gif",
+        },
+        charmander: {
+            name: "Charmander",
+            hp: 100,
+            image: "assets/images/charmander.png",
+            gif: "assets/images/charmanderGIF.gif",
+        }
+    };
 
-            // function printToScreen() {
-            //    document.getElementById('charactersRow').innerText = charObj.image;
-            // }
+    // Object variables.
+    var playerChoice = false;
+    var opponentChoice = false;
+    var wins = 0;
+    var playerHP = 100;
+    var opponentHP = 100;
 
-            // Object variables.
-            var wins = 0;
-            var playerHP = 100;
-            var enemyHP = 100;
+    // Instructions on how to get started.
+    $("#gameComments").text("Choose a character to get started.").hide().fadeIn('3000');
 
-            // Function to initiate game.
-            function initGame() {
-                var playerChoice = false;
-                var enemyChoice = false;
+    // Creates seperate div for each character.
+    for (var key in characters) {
+        var obj = characters[key];
+        var newDiv = $("<div>").attr("id", obj.id).addClass("characters")
+            .append($("<img>").attr("src", obj.image).attr("alt", obj.name).attr("width", "100"))
+            .append($("<h5>").text(obj.name))
 
-                var num = Math.floor(12 / charArr.length)
-                for (var i = 0; i < charObj.length; i++) {
-                    //$("#charactersRow").prepend(charObj);
-                    var charThing = $("<div id='characterRow-" + i + "' class = 'char col-md-" + num + "' value='" + i + "'></div>")
-                    charThing.html("<img src='" + charObj[i].image + "' style = 'width:95px; height:155px;'/><h3>" + charObj[i].name + "</h3>")
-                    $("#characterRow").append(charThing)
-                }
+        console.log("Pokemon yay!");
+
+        $("#characterRow").prepend(newDiv);
+    }
+
+    // Click function for characters.
+    $(".characters").on("click", function() {
+        var characterChoice = $(this);
+        console.log("Pokemon clicked!");
+
+        // First character clicked becomes player choice.
+        if ($("#playerGame").is(":empty")) {
+            $("#playerGame").html(characterChoice).hide().fadeIn('2000').height('250');
+            playerChoice = characters[characterChoice.attr("id")];
+            $("#gameComments").text('Now choose an opponent.').fadeIn('3000');
+
+
+            // Subsequent characters are selected as the opponent when clicked.
+        } else {
+            $("#opponentGame").is(":empty"); {
+                $("#opponentGame").html(characterChoice).hide().fadeIn('2000');
+                opponentChoice = characters[characterChoice.attr("id")];
+                $("h1").hide();
+                $("#characterRow").hide('1000');
+                $("#gameComments").text("Now click the 'ATTACK' button to start playing!").fadeIn('3000');
             }
+        }
+    });
 
-            $(document).on("click", ".char", function() {
-                        $(".gameplay").show('1000')
-                    }
+    // Function for attack button.
+    $("#attackBtn").on("click", function() {
+        console.log("Attack button clicked!!")
 
-                    // Get value of clicked character.
-                    $(document).on("click", ".characters", function() {
-                        console.log("Character clicked!!")
-                    })
-                    // First clicked character set as player.
-                    // Sub
+        // Hides 'ATTACK' button as play-by-play updates.
+        $("#attackBtn").hide('fast');
+        setTimeout(function() {
+            $("#attackBtn").show('fast');
+        }, 1000);
+        $("#gameComments").hide('fast');
+        // Checks if both player and opponent HP's are above 0.
+        if (playerHP > 0 && opponentHP > 0) {
+            console.log("Player and Opponent HP still good!");
 
-                    // Click event for "Attack" button.
-                    $("#fightBtn").on("click", function() {
-                            $("#fightBtn").hide('300')
-                            setTimeout(function() {
-                                    $("#attackBtn").show('300')
-                                }, 3000)
-                                // Enemy loses HP.
-                                // ...When enemy HP reaches zero, enemy is removed from defender area.
-                                // Enemy instantly counter attacks.
-                                // ...Player loses HP.
-                                // ......When player HP reachers zero, game over.
+            var attackDamage = Math.floor(Math.random() * 30);
+            var opponentHPLoss = (opponentHP - attackDamage);
+            // Updates game comments with play-by-play.
+            $("#gameComments").text("Damage inflicted! " + opponentHPLoss + " HP Lost.").fadeIn('3000');
+
+            // UPDATE HP STATS
+
+        };
+    });
+
+
+})
