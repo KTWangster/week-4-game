@@ -27,7 +27,7 @@
         border: 5px solid #3c69aa;
         margin: 10px;
     }
-    
+    /* *** To Do: Healthbar *** 
     .playerHealthBar,
     .opponentHealthBar {
         box-sizing: border-box;
@@ -47,6 +47,8 @@
         transition: width .5s linear;
         background: #f1f1f1;
     }
+
+    *** End: Healthbar *** */
     /* Button */
     
     .button {
